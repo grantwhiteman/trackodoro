@@ -1,3 +1,23 @@
+# Creating Trackodoro
+
+## User stories
+
+As a keen student, I want to be able to time my study sessions
+
+As someone who is easily distracted, I want to be able to pause and unpause my session
+
+As a visual learner, I want to be able to see how much I've studied today
+
+As a multifaceted student, I want to be able to choose the subject which I am studying
+
+|Object|Properties|Messages|Context|Output|
+|---|---|---|---|---|
+|Timer|time @number|Countdown()|Starts at 25:00 and counts down to 0|newTime @number|
+|||Pause()|Pauses timer||
+||||||
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
