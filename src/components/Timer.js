@@ -1,30 +1,30 @@
 import { useState, useEffect } from "react"
 
-const Timer = ({ time }) => {
-    const [timeRemaining, setTimeRemaining] = useState(time*60)
+const Timer = ({ time, addTomato }) => {
+    const [timeRemaining, setTimeRemaining] = useState(time*60*100)
     const [isPaused, setIsPaused] = useState(false)
 
-    let minutes = Math.floor(timeRemaining/60).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
-    let seconds = (timeRemaining % 60).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+    let minutes = Math.floor(timeRemaining / 60 / 100).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+    let seconds = (Math.floor(timeRemaining / 100 % 60)).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
+    let miliseconds = (timeRemaining % 100).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})
 
     useEffect(() => {
-        const timer = setTimeout(() => {
+        const myTimer = setTimeout(() => {
             if(isPaused) return
-            if(timeRemaining === 0) return
+            if(timeRemaining === 0) return addTomato()
             setTimeRemaining(timeRemaining - 1)
-        }, 1000)
-        // return () => clearTimeout(timer)
+        }, 10)
+        return () => clearTimeout(myTimer)
     }, [timeRemaining, isPaused])
 
     const pauseTimer = () => {
-        console.log(isPaused)
         setIsPaused(!isPaused)
     }
 
     return (
         <div>
-            <h2>{minutes}:{seconds}</h2>
-            <button onClick={pauseTimer}>Pause</button>         
+            <h2>{minutes}:{seconds}.{miliseconds}</h2>
+            <button onClick={pauseTimer}>{isPaused ? 'Resume' : 'Pause'}</button>         
         </div>
     )
 }
