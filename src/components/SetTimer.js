@@ -10,10 +10,11 @@ const SetTimer = ({ onSet }) => {
 	// 	onSet(subject, studyTime, breakTime, autoBreak);
 	// };
 
-	const onSubmit = () => {
+	const onSubmit = (e) => {
+        e.preventDefault()
 		onSet(studyTime);
 	};
-    
+
 	return (
 		<form className="add-form" onSubmit={onSubmit}>
 			<div className="form-control">

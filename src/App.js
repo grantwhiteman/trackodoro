@@ -21,11 +21,10 @@ const App = () => {
 				<Header />
 				<Navbar />
 				<Routes>
-					<Route path='trackodoro' element = {showSetTimer && <SetTimer onSet={setTimer} />} />
+					<Route path='trackodoro/settimer' element = {showSetTimer && <SetTimer onSet={setTimer} />} />
 					<Route path='trackodoro/timer' element = {timeRemaining && <Timer time={timeRemaining} addTomato={() => setTomatoes(tomatoes + 1)} />} />
 				</Routes>
 					<h1>Tomatoes earned: {tomatoes}</h1>
-					{timeRemaining}
 			</div>
 		</Router>
 	);
