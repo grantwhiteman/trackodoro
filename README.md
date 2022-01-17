@@ -16,6 +16,17 @@ As a multifaceted student, I want to be able to choose the subject which I am st
 |||Pause()|Pauses timer||
 ||||||
 
+## TODO
+
+<ul>
+    <li>add input for counter time</li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
 
 
 # Getting Started with Create React App
