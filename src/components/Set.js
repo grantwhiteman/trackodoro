@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Set = ({ onSet }) => {
+const Set = ({ time, onSet }) => {
 	const [ subject, setSubject ] = useState('');
-	const [ studyTime, setStudyTime ] = useState(25);
+	const [ studyTime, setStudyTime ] = useState(time);
 	const [ breakTime, setBreakTime ] = useState(5);
 	const [ autoBreak, setAutoBreak ] = useState(false);
 
