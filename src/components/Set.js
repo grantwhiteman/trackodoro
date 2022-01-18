@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const SetTimer = ({ onSet }) => {
+const Set = ({ onSet }) => {
 	const [ subject, setSubject ] = useState('');
 	const [ studyTime, setStudyTime ] = useState(25);
 	const [ breakTime, setBreakTime ] = useState(5);
@@ -9,14 +10,16 @@ const SetTimer = ({ onSet }) => {
 	// const onSubmit = () => {
 	// 	onSet(subject, studyTime, breakTime, autoBreak);
 	// };
+	let navigate = useNavigate();
 
-	const onSubmit = (e) => {
-        e.preventDefault()
+	async function handleSubmit(e) {
+		e.preventDefault()
 		onSet(studyTime);
+		navigate("/trackodoro/timer/");
 	};
 
 	return (
-		<form className="add-form" onSubmit={onSubmit}>
+		<form className="add-form" onSubmit={handleSubmit}>
 			<div className="form-control">
 				<label>Subject</label>
 				<input type="text" placeholder="e.g Physics" onChange={e => setSubject(e.target.value)} />
@@ -44,4 +47,4 @@ const SetTimer = ({ onSet }) => {
 	);
 };
 
-export default SetTimer;
+export default Set;

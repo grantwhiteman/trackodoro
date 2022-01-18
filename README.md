@@ -19,9 +19,10 @@ As a multifaceted student, I want to be able to choose the subject which I am st
 ## TODO
 
 <ul>
-    <li>add input for counter time</li>
-    <li></li>
-    <li></li>
+    <li>Clicking set timer links to Timer</li>
+    <li>Implement break timer, probably a separate route</li>
+    <li>Make automatic break work ?? probably not necessary</li>
+    <li>Make it so subjects each have their own tomatoes</li>
     <li></li>
     <li></li>
     <li></li>
