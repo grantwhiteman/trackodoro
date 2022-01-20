@@ -13,12 +13,14 @@ const App = () => {
 	const [ breakTimer, setBreakTimer ] = useState(5);
 	// const [ tomatoes, setTomatoes ] = useState(0);
 	const [ subject, setSubject] = useState('');
+	const [ autoBreak, setAutoBreak] = useState(false);
 	const [ subjectTomatoes, setSubjectTomatoes ] = useState({});
 	
-	const SetTimer = (subject, studyTime, breakTime) => {
+	const SetTimer = (subject, studyTime, breakTime, auto) => {
 		setPomodoroTimer(studyTime)
 		setBreakTimer(breakTime)
 		setSubject(subject)
+		setAutoBreak(auto)
 	}
 
 	const playSound = () => {
@@ -38,9 +40,9 @@ const App = () => {
 				<Header />
 				<Navbar />
 				<Routes>
-					<Route path='trackodoro/set' element = {<Set pomodoro={pomodoroTimer} breakodoro={breakTimer} onSet={SetTimer} />} />
-					<Route path='trackodoro/timer' element = {<Timer time={pomodoroTimer} addTomato={addTomato} />} />
-					<Route path='trackodoro/break' element = {<Break time={breakTimer} />} />
+					<Route path='trackodoro/set' element = {<Set pomodoro={pomodoroTimer} breakodoro={breakTimer} auto={autoBreak} onSet={SetTimer} />} />
+					<Route path='trackodoro/timer' element = {<Timer time={pomodoroTimer}  addTomato={addTomato} />} />
+					<Route path='trackodoro/break' element = {<Break time={breakTimer} autoBreak={autoBreak}/>} />
 				</Routes>
 				<div>
 					{Object.keys(subjectTomatoes).map(function(key) {

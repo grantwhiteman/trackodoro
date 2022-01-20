@@ -28,6 +28,7 @@ As a multifaceted student, I want to be able to choose the subject which I am st
     <li>Do something about reused code in Break </li>
     <li>Swap out routes for if statement?</li>
     <li>Make it so that leaving the timer page doesn't reset it</li>
+    <li>Make card for subjects</li>
 </ul>
 
 

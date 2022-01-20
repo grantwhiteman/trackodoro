@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Break = ({ time }) => {
 	const [ timeRemaining, setTimeRemaining ] = useState(time * 60);
 	const [ isPaused, setIsPaused ] = useState(true);
+
+	let navigate = useNavigate();
 
 	let minutes = Math.floor(timeRemaining / 60).toLocaleString('en-US', {
 		minimumIntegerDigits: 2,
@@ -17,7 +20,10 @@ const Break = ({ time }) => {
 		() => {
 			const myTimer = setTimeout(() => {
 				if (isPaused) return;
-				if (timeRemaining === 0) return;
+				if (timeRemaining === 0) {
+					navigate("/trackodoro/timer/");
+					return;
+				}
 				setTimeRemaining(timeRemaining - 1);
 			}, 1000);
 			return () => clearTimeout(myTimer); //when I pause, it doesnt count down to next number

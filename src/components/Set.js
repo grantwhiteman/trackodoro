@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Set = ({ pomodoro, breakodoro, onSet }) => {
+const Set = ({ pomodoro, breakodoro, onSet, auto }) => {
 	const [ subject, setSubject ] = useState('');
 	const [ studyTime, setStudyTime ] = useState(pomodoro);
 	const [ breakTime, setBreakTime ] = useState(breakodoro);
-	const [ autoBreak, setAutoBreak ] = useState(false);
+	const [ autoBreak, setAutoBreak ] = useState(auto);
 
 	// const onSubmit = () => {
 	// 	onSet(subject, studyTime, breakTime, autoBreak);
@@ -14,7 +14,7 @@ const Set = ({ pomodoro, breakodoro, onSet }) => {
 
 	async function handleSubmit(e) {
 		e.preventDefault()
-		onSet(subject, studyTime, breakTime);
+		onSet(subject, studyTime, breakTime, autoBreak);
 		navigate("/trackodoro/timer/");
 	};
 
