@@ -21,12 +21,8 @@ const App = () => {
 	}
 
 	const addTomato = () => {
-		console.log(subject)
-		if (subject in subjectTomatoes) {
-			setSubjectTomatoes({...subjectTomatoes, [subject] : subjectTomatoes[subject] + 1 })
-		} else {
-			setSubjectTomatoes({...subjectTomatoes, [subject] : 1 })
-		}
+		if (subject in subjectTomatoes) setSubjectTomatoes({...subjectTomatoes, [subject] : subjectTomatoes[subject] + 1 })
+		else setSubjectTomatoes({...subjectTomatoes, [subject] : 1 })
 	}
 
 	return (

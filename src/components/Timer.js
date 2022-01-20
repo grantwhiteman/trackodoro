@@ -28,7 +28,10 @@ const Timer = ({ time, addTomato }) => {
 	const pauseTimer = () => {
 		setIsPaused(!isPaused);
 	};
-	const resetTimer = () => setIsPaused(setTimeRemaining(time * 60));
+	const resetTimer = () => {
+		!isPaused && pauseTimer();
+		setTimeRemaining(time * 60);
+	}
 
 	return (
 		<div>
