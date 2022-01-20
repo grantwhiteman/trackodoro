@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Break = ({ time }) => {
+const Break = ({ time, auto }) => {
 	const [ timeRemaining, setTimeRemaining ] = useState(time * 60);
 	const [ isPaused, setIsPaused ] = useState(true);
+	const [ autoBreak, setAutoBreak] = useState(auto);
 
 	let navigate = useNavigate();
 
@@ -19,6 +20,10 @@ const Break = ({ time }) => {
 	useEffect(
 		() => {
 			const myTimer = setTimeout(() => {
+				if (autoBreak) {
+					setIsPaused(false)
+					setAutoBreak(false)
+				}
 				if (isPaused) return;
 				if (timeRemaining === 0) {
 					navigate("/trackodoro/timer/");

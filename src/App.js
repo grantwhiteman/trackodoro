@@ -42,7 +42,7 @@ const App = () => {
 				<Routes>
 					<Route path='trackodoro/set' element = {<Set pomodoro={pomodoroTimer} breakodoro={breakTimer} auto={autoBreak} onSet={SetTimer} />} />
 					<Route path='trackodoro/timer' element = {<Timer time={pomodoroTimer}  addTomato={addTomato} />} />
-					<Route path='trackodoro/break' element = {<Break time={breakTimer} autoBreak={autoBreak}/>} />
+					<Route path='trackodoro/break' element = {<Break time={breakTimer} auto={autoBreak}/>} />
 				</Routes>
 				<div>
 					{Object.keys(subjectTomatoes).map(function(key) {

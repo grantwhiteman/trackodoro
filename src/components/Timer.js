@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const Timer = ({ time, addTomato }) => {
 	const [ timeRemaining, setTimeRemaining ] = useState(time * 60);
 	const [ isPaused, setIsPaused ] = useState(true);
-	
+
 	let navigate = useNavigate();
 
 	let minutes = Math.floor(timeRemaining / 60).toLocaleString('en-US', {
