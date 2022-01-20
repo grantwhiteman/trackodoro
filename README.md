@@ -23,9 +23,11 @@ As a multifaceted student, I want to be able to choose the subject which I am st
     <li>Implement break timer, probably a separate route</li> DONE
     <li>Make it so subjects each have their own tomatoes</li> DONE
     <li>Make it so that when you press reset, the timer doesn't start</li> DONE
+    <li>Make sound when timer finishes</li> DONE
     <li>Make automatic break button work</li>
     <li>Do something about reused code in Break </li>
-    <li></li>
+    <li>Swap out routes for if statement?</li>
+    <li>Make it so that leaving the timer page doesn't reset it</li>
 </ul>
 
 

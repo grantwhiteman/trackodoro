@@ -3,6 +3,7 @@ import Timer from './components/Timer';
 import Set from './components/Set';
 import Navbar from './components/Navbar';
 import Break from './components/Break';
+import Sound from './audio/rooster.wav'
 // import Button from "./components/Button";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState } from 'react';
@@ -20,7 +21,13 @@ const App = () => {
 		setSubject(subject)
 	}
 
+	const playSound = () => {
+		const sound = new Audio(Sound);
+		sound.play();
+	}
+
 	const addTomato = () => {
+		playSound()
 		if (subject in subjectTomatoes) setSubjectTomatoes({...subjectTomatoes, [subject] : subjectTomatoes[subject] + 1 })
 		else setSubjectTomatoes({...subjectTomatoes, [subject] : 1 })
 	}
