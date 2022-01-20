@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Set = ({ time, onSet }) => {
+const Set = ({ pomodoro, breakodoro, onSet }) => {
 	const [ subject, setSubject ] = useState('');
-	const [ studyTime, setStudyTime ] = useState(time);
-	const [ breakTime, setBreakTime ] = useState(5);
+	const [ studyTime, setStudyTime ] = useState(pomodoro);
+	const [ breakTime, setBreakTime ] = useState(breakodoro);
 	const [ autoBreak, setAutoBreak ] = useState(false);
 
 	// const onSubmit = () => {
@@ -14,7 +14,7 @@ const Set = ({ time, onSet }) => {
 
 	async function handleSubmit(e) {
 		e.preventDefault()
-		onSet(studyTime);
+		onSet(subject, studyTime, breakTime);
 		navigate("/trackodoro/timer/");
 	};
 
@@ -22,16 +22,15 @@ const Set = ({ time, onSet }) => {
 		<form className="add-form" onSubmit={handleSubmit}>
 			<div className="form-control">
 				<label>Subject</label>
-				<input type="text" placeholder="e.g Physics" onChange={e => setSubject(e.target.value)} />
-                {subject}
+				<input type="text" placeholder="e.g Physics" onChange={e => setSubject(e.target.value)} required />
 			</div>
-            			<div className="form-control">
-			<label>Study time</label>
+            <div className="form-control">
+				<label>Study time</label>
                 <input type="number" value={studyTime} onChange={e => setStudyTime(e.target.value)} />
 			</div>
 			<div className="form-control">
 				<label>Break time</label>
-				<input type="number" value={5} onChange={e => setBreakTime(e.target.value)} />
+				<input type="number" value={breakTime} onChange={e => setBreakTime(e.target.value)} />
 			</div>
 			<div className="form-control form-control-check">
 				<label>Automatically start break</label>
