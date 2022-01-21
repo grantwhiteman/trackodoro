@@ -1,12 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Timer = ({ time, addTomato }) => {
 	const [ timeRemaining, setTimeRemaining ] = useState(time * 60);
 	const [ isPaused, setIsPaused ] = useState(true);
+	const timeRemainingRef = useRef(timeRemaining);
+	const isPausedRef = useRef(isPaused);
 
 	let navigate = useNavigate();
-
 	let minutes = Math.floor(timeRemaining / 60).toLocaleString('en-US', {
 		minimumIntegerDigits: 2,
 		useGrouping: false
@@ -16,26 +17,31 @@ const Timer = ({ time, addTomato }) => {
 		useGrouping: false
 	});
 
-	useEffect(
+	function timer() {
+		if (isPausedRef.current) return;
+		if (timeRemainingRef === 0) {
+			addTomato();
+			navigate("/trackodoro/break/");
+		}
+		timeRemainingRef.current --;
+		setTimeRemaining(timeRemainingRef.current)
+	}
+
+	useEffect( //maybe i dont wanty to use useeffect
 		() => {
-			const myTimer = setTimeout(() => {
-				if (isPaused) return;
-				if (timeRemaining === 0) {
-					addTomato();
-					navigate("/trackodoro/break/");
-				}
-				setTimeRemaining(timeRemaining - 1);
-			}, 1000);
-			return () => clearTimeout(myTimer); //when I pause, it doesnt count down to next number
+			const myTimer = setInterval(timer, 1000);
+			return () => clearInterval(myTimer); //when I pause, it doesnt count down to next number
 		},
-		[ timeRemaining, isPaused ]
+		[] // why does this stop working on an inactive page after ~ 5 minutes?!
 	);
 
 	const pauseTimer = () => {
-		setIsPaused(!isPaused);
+		isPausedRef.current = !isPausedRef.current
+		setIsPaused(isPausedRef.current);
 	};
+
 	const resetTimer = () => {
-		!isPaused && pauseTimer();
+		!isPausedRef.current && pauseTimer();
 		setTimeRemaining(time * 60);
 	}
 

@@ -3,6 +3,7 @@ import Timer from './components/Timer';
 import Set from './components/Set';
 import Navbar from './components/Navbar';
 import Break from './components/Break';
+import Pomodoros from './components/Pomodoros';
 import Sound from './audio/rooster.wav'
 // import Button from "./components/Button";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
@@ -48,6 +49,7 @@ const App = () => {
 					{Object.keys(subjectTomatoes).map(function(key) {
 						return <div key={key}>Subject: {key}, Tomatoes: {subjectTomatoes[key]}</div>;
 					})}
+					<Pomodoros subjectTomatoes={subjectTomatoes} />
 				</div>
 			</div>
 		</Router>
