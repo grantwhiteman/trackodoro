@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/trackodoro/static/css/main.31cd00b7.css",
-    "main.js": "/trackodoro/static/js/main.981ce481.js",
+    "main.js": "/trackodoro/static/js/main.993137f8.js",
     "static/js/787.8984d3a5.chunk.js": "/trackodoro/static/js/787.8984d3a5.chunk.js",
     "static/media/rooster.wav": "/trackodoro/static/media/rooster.d3f42f81331de5b17e26.wav",
     "index.html": "/trackodoro/index.html",
     "main.31cd00b7.css.map": "/trackodoro/static/css/main.31cd00b7.css.map",
-    "main.981ce481.js.map": "/trackodoro/static/js/main.981ce481.js.map",
+    "main.993137f8.js.map": "/trackodoro/static/js/main.993137f8.js.map",
     "787.8984d3a5.chunk.js.map": "/trackodoro/static/js/787.8984d3a5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.31cd00b7.css",
-    "static/js/main.981ce481.js"
+    "static/js/main.993137f8.js"
   ]
 }
