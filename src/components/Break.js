@@ -15,20 +15,22 @@ const Break = ({ time, auto }) => {
 
 	let minutes = toTwoSigFigs(timeRemainingRef.current / 60);
 	let seconds = toTwoSigFigs(timeRemainingRef.current % 60);
-
+	
 	function timer() {
 		if (autoBreak) {
 			isPausedRef.current = false;
 			setAutoBreak(false);
 		}
-
+		
+		setIsPaused(isPausedRef.current);
+		
 		if (isPausedRef.current) return;
-
+		
 		if (timeRemainingRef.current === 0) {
 			navigate("/trackodoro/timer/");
 			return
 		}
-
+		
 		timeRemainingRef.current = differenceInSeconds(expireDateRef.current, Date.now())
 		document.title = `${toTwoSigFigs(timeRemainingRef.current / 60)}:${toTwoSigFigs(timeRemainingRef.current % 60)} Trackodoro`;
 		setTimeRemaining(timeRemainingRef.current)
@@ -43,7 +45,6 @@ const Break = ({ time, auto }) => {
 	const pauseTimer = () => {
 		expireDateRef.current = (Date.now() + timeRemainingRef.current * 1000)
 		isPausedRef.current = !isPausedRef.current
-		setIsPaused(isPausedRef.current);
 	};
 
 	const resetTimer = () => {
