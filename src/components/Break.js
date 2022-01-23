@@ -55,7 +55,7 @@ const Break = ({ time, auto }) => {
 
 	return (
 		<div>
-			<h1>
+			<h1 className='digitize'>
 				{minutes}:{seconds}
 			</h1>
 			<button className="btn btn-block" onClick={pauseTimer}>

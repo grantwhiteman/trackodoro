@@ -16,7 +16,7 @@ const App = () => {
 	const [ subject, setSubject] = useState('');
 	const [ autoBreak, setAutoBreak] = useState(false);
 	const [ subjectTomatoes, setSubjectTomatoes ] = useState({});
-	
+
 	const SetTimer = (subject, studyTime, breakTime, auto) => {
 		setPomodoroTimer(studyTime)
 		setBreakTimer(breakTime)

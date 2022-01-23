@@ -106,6 +106,15 @@ body {
   height: 20px;
 }
 
+.digitize {
+  border: 2px solid #73AD21;
+  background-color: grey;
+  border-radius: 25px;
+  text-align:center;
+  font-size: 60px;
+  border-color: black;
+}
+
 footer {
   margin-top: 30px;
   text-align: center;
