@@ -37,7 +37,7 @@ const App = () => {
 
 	return (
 		<Router>
-			<div className="container">
+			<div className="container" style={{backgroundColor: 'turquoise'}}>
 				<Header />
 				<Navbar />
 				<Routes>

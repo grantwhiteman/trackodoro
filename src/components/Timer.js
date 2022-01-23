@@ -1,41 +1,40 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { differenceInSeconds } from 'date-fns';
+import toTwoSigFigs from './toTwoSigFigs';
 
 const Timer = ({ time, addTomato }) => {
 	const [ timeRemaining, setTimeRemaining ] = useState(time * 60);
 	const [ isPaused, setIsPaused ] = useState(true);
 	const timeRemainingRef = useRef(timeRemaining);
+	const expireDateRef = useRef(Date.now() + timeRemaining * 1000);
 	const isPausedRef = useRef(isPaused);
 
 	let navigate = useNavigate();
-	let minutes = Math.floor(timeRemaining / 60).toLocaleString('en-US', {
-		minimumIntegerDigits: 2,
-		useGrouping: false
-	});
-	let seconds = Math.floor(timeRemaining % 60).toLocaleString('en-US', {
-		minimumIntegerDigits: 2,
-		useGrouping: false
-	});
+
+	let minutes = toTwoSigFigs(timeRemainingRef.current / 60);
+	let seconds = toTwoSigFigs(timeRemainingRef.current % 60);
 
 	function timer() {
 		if (isPausedRef.current) return;
-		if (timeRemainingRef === 0) {
+		if (timeRemainingRef.current === 0) {
 			addTomato();
 			navigate("/trackodoro/break/");
+			return
 		}
-		timeRemainingRef.current --;
+		timeRemainingRef.current = differenceInSeconds(expireDateRef.current, Date.now())
+		document.title = `${toTwoSigFigs(timeRemainingRef.current / 60)}:${toTwoSigFigs(timeRemainingRef.current % 60)} Trackodoro`;
 		setTimeRemaining(timeRemainingRef.current)
 	}
 
-	useEffect( //maybe i dont wanty to use useeffect
-		() => {
+	useEffect(() => {
 			const myTimer = setInterval(timer, 1000);
 			return () => clearInterval(myTimer); //when I pause, it doesnt count down to next number
-		},
-		[] // why does this stop working on an inactive page after ~ 5 minutes?!
+		}
 	);
-
+		
 	const pauseTimer = () => {
+		expireDateRef.current = (Date.now() + timeRemainingRef.current * 1000)
 		isPausedRef.current = !isPausedRef.current
 		setIsPaused(isPausedRef.current);
 	};
@@ -43,6 +42,8 @@ const Timer = ({ time, addTomato }) => {
 	const resetTimer = () => {
 		!isPausedRef.current && pauseTimer();
 		setTimeRemaining(time * 60);
+		timeRemainingRef.current = (time * 60)
+		document.title = `${toTwoSigFigs(timeRemainingRef.current / 60)}:${toTwoSigFigs(timeRemainingRef.current % 60)} Trackodoro`;
 	}
 
 	return (
